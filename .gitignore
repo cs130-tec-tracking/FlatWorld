@@ -1,4 +1,6 @@
-
-Testbed/Library/AnnotationManager
+Testbed/obj/
+Testbed/Library/
+Testbed/Temp/
+Testbed/.vscode/
 Testbed/Testbed.sln
-Testbed/.vscode/settings.json
+Testbed/Assembly-CSharp.csproj
