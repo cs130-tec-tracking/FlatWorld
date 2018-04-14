@@ -1,0 +1,442 @@
+[
+  {
+    "hash": "BRB",
+    "name": "Austin City Limits 2017",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146129/billboards_2017_acl_acl_flat_q5vxoz.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146129/billboards_2017_acl_acl_flat_q5vxoz.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146128/billboards_2017_acl_acl_back_avlwhp.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146129/billboards_2017_acl_acl_mid_qjizfa.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146129/billboards_2017_acl_acl_fore_sbebtk.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Brothers Osborne",
+        "The Revivalists",
+        "Run the Jewels",
+        "Martin Garrix",
+        "Tove Lo",
+        "Portugal. The Man",
+        "Gorillaz",
+        "Red Hot Chili Peppers"
+      ],
+      "titles": [
+        "Stay a Little Longer",
+        "Wish I Knew You",
+        "2100",
+        "One More Time / In the Name of Love",
+        "Habits (Stay High)",
+        "Feel It Still",
+        "Feel Good Inc. / Clint Eastwood",
+        "Give It Away"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/BrothersOsborne/00_master/stereo/SONG1_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/TheRevivalists/00_master/stereo/SONG2_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RunTheJewels/00_master/stereo/SONG2_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/MartinGarrix/00_master/stereo/SONG2AND3_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/ToveLo/00_master/stereo/SONG2_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/PortugalTheMan/00_master/stereo/SONG1_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/Gorillaz/00_master/stereo/SONG1AND2_MASTER_360S.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/00_master/stereo/SONG3_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/BrothersOsborne/00_master/mono/SONG1_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/TheRevivalists/00_master/mono/SONG2_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RunTheJewels/00_master/mono/SONG2_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/MartinGarrix/00_master/mono/SONG2AND3_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/ToveLo/00_master/mono/SONG2_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/PortugalTheMan/00_master/mono/SONG1_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/Gorillaz/00_master/mono/SONG1AND2_MASTER_360M.mp4",
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/00_master/mono/SONG3_MASTER_360M.mp4"
+        ]
+      },
+      {
+        "name": "Guitar",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-2_uaqbvm.png",
+        "stereo": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/01_angle1/stereo/SONG3_ANGLE1_360M.mp4"
+        ],
+        "mono": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ]
+      },
+      {
+        "name": "Bass",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-3_ka0cnq.png",
+        "stereo": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/02_angle2/stereo/SONG3_ANGLE2_360M.mp4"
+        ],
+        "mono": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ]
+      },
+      {
+        "name": "Drums",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-4_ykg58n.png",
+        "stereo": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/03_angle3/stereo/SONG3_ANGLE3_360M.mp4"
+        ],
+        "mono": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "OP8",
+    "name": "Austin City Limits 2017: Red Hot Chili Peppers",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146158/billboards_2017_acl_redhotchilipeppers_flat_zmeskc.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146158/billboards_2017_acl_redhotchilipeppers_flat_zmeskc.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146158/billboards_2017_acl_redhotchilipeppers_back_kz9pvx.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146158/billboards_2017_acl_redhotchilipeppers_mid_laegxa.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146158/billboards_2017_acl_redhotchilipeppers_fore_hbljog.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Red Hot Chili Peppers"
+      ],
+      "titles": [
+        "Give It Away"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/00_master/stereo/SONG3_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/00_master/mono/SONG3_MASTER_360M.mp4"
+        ]
+      },
+      {
+        "name": "Guitar",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-2_uaqbvm.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/01_angle1/stereo/SONG3_ANGLE1_360M.mp4"
+        ],
+        "mono": [
+          null
+        ]
+      },
+      {
+        "name": "Bass",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-3_ka0cnq.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/02_angle2/stereo/SONG3_ANGLE2_360M.mp4"
+        ],
+        "mono": [
+          null
+        ]
+      },
+      {
+        "name": "Drums",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-4_ykg58n.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RedHotChiliPeppers/03_angle3/stereo/SONG3_ANGLE3_360M.mp4"
+        ],
+        "mono": [
+          null
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "TB3",
+    "name": "Austin City Limits 2017: Gorillaz",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146143/billboards_2017_acl_gorillaz_flat_tx2gxd.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146143/billboards_2017_acl_gorillaz_flat_tx2gxd.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146143/billboards_2017_acl_gorillaz_back_njtoix.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146143/billboards_2017_acl_gorillaz_mid_cvldtf.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146143/billboards_2017_acl_gorillaz_fore_vkyi8c.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Gorillaz"
+      ],
+      "titles": [
+        "Feel Good Inc. / Clint Eastwood"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/Gorillaz/00_master/stereo/SONG1AND2_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/Gorillaz/00_master/mono/SONG1AND2_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "TR9",
+    "name": "Austin City Limits 2017: Martin Garrix",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146148/billboards_2017_acl_martingarrix_flat_mdv4n2.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146148/billboards_2017_acl_martingarrix_flat_mdv4n2.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146148/billboards_2017_acl_martingarrix_back_dbmxk5.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146150/billboards_2017_acl_martingarrix_mid_vzlxlc.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146148/billboards_2017_acl_martingarrix_fore_i4zcp4.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Martin Garrix"
+      ],
+      "titles": [
+        "One More Time / In the Name of Love"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/MartinGarrix/00_master/stereo/SONG2AND3_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/MartinGarrix/00_master/mono/SONG2AND3_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "L0L",
+    "name": "Austin City Limits 2017: Run the Jewels",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146163/billboards_2017_acl_runthejewels_flat_fzkczp.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146163/billboards_2017_acl_runthejewels_flat_fzkczp.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146163/billboards_2017_acl_runthejewels_back_i3xvlk.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146163/billboards_2017_acl_runthejewels_mid_gcvgqx.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146163/billboards_2017_acl_runthejewels_fore_cqhwqb.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Run the Jewels"
+      ],
+      "titles": [
+        "2100"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RunTheJewels/00_master/stereo/SONG2_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/RunTheJewels/00_master/mono/SONG2_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "T1T",
+    "name": "Austin City Limits 2017: Tove Lo",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146174/billboards_2017_acl_tovelo_flat_xsbwd1.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146174/billboards_2017_acl_tovelo_flat_xsbwd1.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146174/billboards_2017_acl_tovelo_back_non8sc.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146173/billboards_2017_acl_tovelo_mid_o7rb54.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146173/billboards_2017_acl_tovelo_fore_ovtxqp.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Tove Lo"
+      ],
+      "titles": [
+        "Habits (Stay High)"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/ToveLo/00_master/stereo/SONG2_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/ToveLo/00_master/mono/SONG2_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "B00",
+    "name": "Austin City Limits 2017: Portgual. The Man",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146153/billboards_2017_acl_portugaltheman_flat_i7iow8.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146153/billboards_2017_acl_portugaltheman_flat_i7iow8.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146154/billboards_2017_acl_portugaltheman_back_llmf7g.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146154/billboards_2017_acl_portugaltheman_mid_l0s8vx.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146154/billboards_2017_acl_portugaltheman_fore_yb8f6v.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Portugal. The Man"
+      ],
+      "titles": [
+        "Feel It Still"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/PortugalTheMan/00_master/stereo/SONG1_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/PortugalTheMan/00_master/mono/SONG1_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "GUP",
+    "name": "Austin City Limits 2017: The Revivalists",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146169/billboards_2017_acl_therevivalists_flat_luumc4.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146169/billboards_2017_acl_therevivalists_flat_luumc4.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146169/billboards_2017_acl_therevivalists_back_hxhzxf.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146169/billboards_2017_acl_therevivalists_mid_owjc2j.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146169/billboards_2017_acl_therevivalists_fore_aesgdb.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "The Revivalists"
+      ],
+      "titles": [
+        "Wish I Knew You"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/TheRevivalists/00_master/stereo/SONG2_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/TheRevivalists/00_master/mono/SONG2_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "D0G",
+    "name": "Austin City Limits 2017: Brothers Osborne",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146139/billboards_2017_acl_brothersosborne_flat_k9fa5u.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146139/billboards_2017_acl_brothersosborne_flat_k9fa5u.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146138/billboards_2017_acl_brothersosborne_back_jw06te.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146138/billboards_2017_acl_brothersosborne_mid_qvvs3a.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146138/billboards_2017_acl_brothersosborne_fore_aolxwu.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Brothers Osborne"
+      ],
+      "titles": [
+        "Stay a Little Longer"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/BrothersOsborne/00_master/stereo/SONG1_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/AustinCityLimits/BrothersOsborne/00_master/mono/SONG1_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  },
+  {
+    "hash": "3WW",
+    "name": "Lollapalooza 2017: Muse",
+    "imgs": {
+      "large": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146121/billboards_2017_lolla_muse_flat_whmutm.png",
+      "small": "https://res.cloudinary.com/dr17awk8d/image/upload/c_scale,w_480/v1516146121/billboards_2017_lolla_muse_flat_whmutm.png",
+      "back": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146121/billboards_2017_lolla_muse_back_izbhsd.png",
+      "mid": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146121/billboards_2017_lolla_muse_mid_fllo2b.png",
+      "fore": "https://res.cloudinary.com/dr17awk8d/image/upload/v1516146121/billboards_2017_lolla_muse_fore_arufqk.png"
+    },
+    "trackInfos": {
+      "artists": [
+        "Muse"
+      ],
+      "titles": [
+        "Psycho"
+      ]
+    },
+    "vantages": [
+      {
+        "name": "Edit",
+        "img": "https://res.cloudinary.com/dr17awk8d/image/upload/v1512448337/Tove-1_bpat4b.png",
+        "stereo": [
+          "/storage/emulated/0/Movies/2017/Lollapalooza/Muse/00_master/stereo/PSYCHO_MASTER_360S.mp4"
+        ],
+        "mono": [
+          "/storage/emulated/0/Movies/2017/Lollapalooza/Muse/00_master/mono/PSYCHO_MASTER_360M.mp4"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "authApi": {
+    "apiUrl": "https://staging-auth.stageme.com",
+    "version": "2",
+    "clientId": "localSPA"
+  },
+  "mainApi": {
+    "apiUrl": "https://staging-api.stageme.com",
+    "version": "2",
+    "clientId": "localSPA"
+  },
+  "api": {
+    "url": "https://api.stage.co/v1/dev/",
+    "key": "UAfnCiNHK66Yemv7yCE2r7XsDSZ7wkPEL3qxNX5i"
+  },
+  "facebook": {
+    "appId": "135222976568314",
+    "appDisplayName": "Stageme Staging"
+  },
+  "webUrls": {
+    "root": "https://staging.stageme.com",
+    "forgotPassword": "https://staging.stageme.com/forgot-password/app",
+    "storeUrl": "https://stageme.com/store"
+  }
+}

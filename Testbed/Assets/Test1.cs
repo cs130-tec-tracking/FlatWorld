@@ -1,21 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Test1 : MonoBehaviour 
 {
 	private Transform m_Transform;
 
 	// Use this for initialization
-	void Start () {
-		m_Transform = transform;//gameObject.GetComponent<Transform>( );
-
-		
-
+	IEnumerator Start ()
+	{
+		string sceneName = "LoadMeAdditive";
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+		Debug.Log("Loading2 " + sceneName);
+		while (!asyncLoad.isDone) { yield return null; }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
