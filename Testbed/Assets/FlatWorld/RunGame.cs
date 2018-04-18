@@ -21,6 +21,27 @@ public enum Attribute
 	Charisma      // Henchmen, Reaction
 }
 
+
+public class Advancement 
+{
+	public virtual void ApplyAdvancement ( Character character ) { }
+}
+
+public class IncreaseAttribute : Advancement
+{
+	public Attribute Key_Attribute;
+	public IncreaseAttribute ( Attribute key_attribute )
+	{
+		Key_Attribute = key_attribute;
+	}
+
+	public override void ApplyAdvancement ( Character character ) 
+	{
+		character.Attribute_Current[ (int)Key_Attribute ] = character.Attribute_Current[ (int)Key_Attribute ] + 1;
+	}
+}
+
+
 public class NPC : Character
 {
 	public string Name;
@@ -104,6 +125,10 @@ public class Weapon : Equippable
 public class Shield : Equippable
 {
 	public int Block_Number;
+	public Shield ( int block_numer ) 
+	{
+
+	}
 }
 
 public class Armor : Equippable
@@ -154,7 +179,6 @@ public class Spell : Item
 		Spell_Description = spell_description;
 	}
 }
-
 public class Character
 {
 	public List<int> Attribute_Current;
@@ -180,7 +204,6 @@ public class Character
 	}
 }
 
-
 public class RunGame : MonoBehaviour 
 {
 	public Dictionary<string, Weapon> All_Weapons;
@@ -188,6 +211,8 @@ public class RunGame : MonoBehaviour
 	public Dictionary<string, Skill> All_Skills;
 	public Dictionary<string, Spell> All_Spells;
 	public Dictionary<string, Shield> All_Shields;
+
+	public Dictionary<string, Advancement> All_Advancements;
 
 	private void Awake( ) 
 	{
@@ -238,6 +263,31 @@ public class RunGame : MonoBehaviour
 
 		// A shield is a special item that allows you to force one attack against them to be rerolled. Each shield has a number of uses before it breaks.
 		All_Shields = new Dictionary<string, Shield>( );
+		All_Shields.Add( "Buckler", new Shield( 3 ));
+
+		All_Advancements = new Dictionary< string, Advancement >( );
+		
+		All_Advancements.Add( "Increase Strength", new IncreaseAttribute( Attribute.Strength ) );
+		All_Advancements.Add( "Increase Dexterity", new IncreaseAttribute( Attribute.Dexterity ) );
+		All_Advancements.Add( "Increase Constitution", new IncreaseAttribute( Attribute.Constitution ) );
+		All_Advancements.Add( "Increase Intelligence", new IncreaseAttribute( Attribute.Intelligence ) );
+		All_Advancements.Add( "Increase Wisdom", new IncreaseAttribute( Attribute.Wisdom ) );
+		All_Advancements.Add( "Increase Charisma", new IncreaseAttribute( Attribute.Charisma ) );
+
+		List<string> Fighter_Advancements = new List<string>( );
+		// +7 strength
+		for ( int i = 0; i < 7; i++ ) {	Fighter_Advancements.Add( "Increase Strength" ); }
+		// +5 dexterity
+		for ( int i = 0; i < 5; i++ ) {	Fighter_Advancements.Add( "Increase Dexterity" ); }
+		// +5 constitution
+		for ( int i = 0; i < 5; i++ ) {	Fighter_Advancements.Add( "Increase Constitution" ); }
+		// +2 intelligence
+		for ( int i = 0; i < 5; i++ ) {	Fighter_Advancements.Add( "Increase Intelligence" ); }
+		// +2 wisdom
+		for ( int i = 0; i < 5; i++ ) {	Fighter_Advancements.Add( "Increase Constitution" ); }
+		// +4 charisma
+		for ( int i = 0; i < 4; i++ ) {	Fighter_Advancements.Add( "Increase Charisma" ); }
+
 	}
 
 	public IEnumerator SyncWithServer ( string character_name, Character character )

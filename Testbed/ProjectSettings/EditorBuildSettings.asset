@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TEST.unity
+    path: Assets/FlatWorld/TEST.unity
     guid: bfff8928146309e4fa4785f4954f0fc7
-  - enabled: 1
-    path: Assets/LoadMeAdditive.unity
+  - enabled: 0
+    path: Assets/FlatWorld/LoadMeAdditive.unity
     guid: e61b7774ec7b38048886790f539993cf
