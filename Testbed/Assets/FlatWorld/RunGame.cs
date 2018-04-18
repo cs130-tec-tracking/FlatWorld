@@ -21,6 +21,53 @@ public enum Attribute
 	Charisma      // Henchmen, Reaction
 }
 
+public enum CharacterClass
+{
+	Fighter = 0,
+	Ranger,
+	Thief,
+	Bard,
+	Wizard,
+	Shair,
+	Cleric,
+	Paladin
+}
+
+public class Advancement
+{
+	public virtual void ApplyAdvancement ( Character character ) { }
+}
+
+public class IncreaseAttribute : Advancement
+{
+	public Attribute Key_Attribute;
+
+	public IncreaseAttribute ( Attribute key_attribute )
+	{
+		Key_Attribute = key_attribute;
+	}
+
+	public override void ApplyAdvancement ( Character character ) 
+	{
+		character.Attribute_Current[ (int)Key_Attribute ] = character.Attribute_Current[ (int)Key_Attribute ] + 1;
+	}
+}
+
+public class GainItem : Advancement
+{
+	public string Item_Name;
+
+	public GainItem ( string item_name )
+	{
+		Item_Name = item_name;
+	}
+
+	public override void ApplyAdvancement ( Character character ) 
+	{
+		character.Inventory.Add( Item_Name );
+	}
+}
+
 public class NPC : Character
 {
 	public string Name;
@@ -104,6 +151,10 @@ public class Weapon : Equippable
 public class Shield : Equippable
 {
 	public int Block_Number;
+	public Shield ( int block_number )
+	{
+		Block_Number = block_number;
+	}
 }
 
 public class Armor : Equippable
@@ -158,7 +209,8 @@ public class Spell : Item
 public class Character
 {
 	public List<int> Attribute_Current;
-	public List<string> Armor, Skills, Weapons, Inventory;
+	public List<string> Armor, Skills, Weapons, Inventory, Advancements;
+
 
 	public Character ( )
 	{
@@ -167,6 +219,59 @@ public class Character
 		Skills = new List<string>( );
 		Weapons = new List<string>( );
 		Inventory = new List<string>( );
+	}
+
+	// Special "class based" abilities here
+	public int Weapon_Speed_Mod = 2;
+
+
+	//TODO: Finish allocating advancements!
+	public void PopulateAdvancements ( CharacterClass character_class )
+	{
+		Advancements = new List<string>( );
+		switch ( character_class )
+		{
+		case CharacterClass.Fighter:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Ranger:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Thief:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Bard:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Wizard:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			AddGainItemsAdvancements( new string[]{ "Learn DARK", "Learn DIE", "Learn LIFT", "Learn GLOW", "Learn RUST" } );
+			break;
+		case CharacterClass.Shair:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Cleric:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		case CharacterClass.Paladin:
+			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
+			break;
+		}
+	}
+
+	public void AddGainItemsAdvancements ( string[] item_names )
+	{
+		for ( int i = 0; i < item_names.Length; i++ ) { Advancements.Add( item_names[ i ] ); }
+	}
+
+	public void AddIncreasedAttributesAdvancements ( int _str, int _dex, int _con, int _int, int _wis, int _cha )
+	{
+		for ( int i = 0; i < _str; i++ ) { Advancements.Add( "Increase Strength" ); }
+		for ( int i = 0; i < _dex; i++ ) { Advancements.Add( "Increase Dexterity" ); }
+		for ( int i = 0; i < _con; i++ ) { Advancements.Add( "Increase Constitution" ); }
+		for ( int i = 0; i < _int; i++ ) { Advancements.Add( "Increase Intelligence" ); }
+		for ( int i = 0; i < _wis; i++ ) { Advancements.Add( "Increase Wisdom" ); }
+		for ( int i = 0; i < _cha; i++ ) { Advancements.Add( "Increase Charisma" ); }
 	}
 
 	public bool GetAttributeRoll ( Attribute key_attribute, int skill_mod )
@@ -180,7 +285,6 @@ public class Character
 	}
 }
 
-
 public class RunGame : MonoBehaviour 
 {
 	public Dictionary<string, Weapon> All_Weapons;
@@ -188,6 +292,7 @@ public class RunGame : MonoBehaviour
 	public Dictionary<string, Skill> All_Skills;
 	public Dictionary<string, Spell> All_Spells;
 	public Dictionary<string, Shield> All_Shields;
+	public Dictionary<string, Advancement> All_Advancements;
 
 	private void Awake( ) 
 	{
@@ -211,33 +316,102 @@ public class RunGame : MonoBehaviour
 		All_Skills.Add( "LockPick", new Skill( ) );
 
 		All_Spells = new Dictionary<string, Spell>( );
-		All_Spells.Add( "BLESS",  new Spell( 1, "BLESS",  "" ) );
-		All_Spells.Add( "DARK",   new Spell( 1, "DARK",   "" ) );
-		All_Spells.Add( "DIE",    new Spell( 1, "DIE",    "Deal 1d4 damage to a single target." ) );
-		All_Spells.Add( "CURE",   new Spell( 1, "CURE",   "Target makes a poison or disease save." ) ); // normally save 1/hour or 1/day respectivly
-		All_Spells.Add( "GLOW",   new Spell( 1, "GLOW",   "" ) );
-		All_Spells.Add( "LIFT",   new Spell( 1, "LIFT",   "<r>Raises</r> a single object <b>1</b> foot off the ground." ) );
-		All_Spells.Add( "RUST",   new Spell( 1, "RUST",   "" ) );
-		All_Spells.Add( "SHIFT",  new Spell( 1, "SHIFT",  "Transforms caster into a creature with a natural attack." ) );
-		All_Spells.Add( "TAME",   new Spell( 1, "TAME",   "1 animal becomes friendly." ) );
+		// Level 1 General Spells
+		All_Spells.Add( "DARK",      new Spell( 1, "DARK",   "" ) );
+		All_Spells.Add( "DIE",       new Spell( 1, "DIE",    "Deal 1d4 damage to a single target." ) );
+		All_Spells.Add( "GLOW",      new Spell( 1, "GLOW",   "" ) );
 
-		/*
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
-		All_Spells.Add( "", new Spell( "", "" ) );
+		// Level 1 Wizard spells
+		All_Spells.Add( "KNOCK",     new Spell( 1, "", "" ) ); //open door 
+
+		All_Spells.Add( "BLESS",     new Spell( 1, "BLESS",  "" ) );
+		All_Spells.Add( "CURE",      new Spell( 1, "CURE",   "Target makes a poison or disease save." ) ); // normally save 1/hour or 1/day respectivly
+		All_Spells.Add( "LIFT",      new Spell( 1, "LIFT",   "<r>Raises</r> a single object <b>1</b> foot off the ground." ) );
+		All_Spells.Add( "RUST",      new Spell( 1, "RUST",   "" ) );
+		All_Spells.Add( "SHIFT",     new Spell( 1, "SHIFT",  "Transforms caster into a creature with a natural attack." ) );
+		All_Spells.Add( "TAME",      new Spell( 1, "TAME",   "1 animal becomes friendly." ) );
+
+		All_Spells.Add( "BURN",      new Spell( 2, "", "" ) );
+		All_Spells.Add( "CHILL",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "DETECT",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "PURIFY",    new Spell( 2, "", "" ) );
+		All_Spells.Add( "OBSCURE",   new Spell( 3, "", "" ) );
+		All_Spells.Add( "CHANT",     new Spell( 2, "", "" ) );
+		All_Spells.Add( "PORTENT",   new Spell( 2, "", "" ) );
+		All_Spells.Add( "DREAM",     new Spell( 3, "", "" ) );
+		All_Spells.Add( "COMMUNE",   new Spell( 2, "", "" ) );
+		All_Spells.Add( "STRIDE",    new Spell( 1, "", "" ) );
+
+		All_Spells.Add( "PRAYER",    new Spell( 2, "", "" ) );
+		All_Spells.Add( "SILENCE",   new Spell( 2, "", "" ) );
+		All_Spells.Add( "PROTECT",   new Spell( 1, "", "" ) );
+		All_Spells.Add( "ROOTS",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "EXORCISE",  new Spell( 1, "", "" ) );
+		All_Spells.Add( "TONGUES",   new Spell( 1, "", "" ) );
+		All_Spells.Add( "HIDE",      new Spell( 1, "", "" ) ); //invisibility
+		All_Spells.Add( "HOLD",      new Spell( 2, "", "" ) );
+		All_Spells.Add( "ADORE",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "TRICK",     new Spell( 1, "", "" ) ); // Hypnotism
+		All_Spells.Add( "SOUND",     new Spell( 1, "", "" ) ); //audible glamour
+		All_Spells.Add( "VANISH",    new Spell( 1, "", "" ) ); //invisibility
+		All_Spells.Add( "SCARE",     new Spell( 1, "", "" ) ); //scare
+		All_Spells.Add( "VEIL",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "BLUR",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "COLOR",     new Spell( 1, "", "" ) ); //color spray
+		All_Spells.Add( "QUIET",     new Spell( 1, "", "" ) ); //you are quiet?
+		All_Spells.Add( "WEB",       new Spell( 1, "", "" ) );
+		All_Spells.Add( "TOAD",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "REVEAL",    new Spell( 1, "", "" ) );
+		//All_Spells.Add( "BOLT",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "DANCE",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "FLOAT",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "FLIGHT",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "FIRE",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "ESCAPE",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "IGNITE",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "JOKE",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "RESTORE",   new Spell( 1, "", "" ) );
+		All_Spells.Add( "RETURN",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "SLEEP",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "FORGET",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "ENLARGE",   new Spell( 1, "", "" ) );
+		All_Spells.Add( "TRANSFORM", new Spell( 1, "", "" ) );
+		All_Spells.Add( "SHOUT",     new Spell( 1, "", "" ) );
+		All_Spells.Add( "SHIELD",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "SHATTER",   new Spell( 1, "", "" ) ); //power word kill
+		All_Spells.Add( "GUST",      new Spell( 1, "", "" ) ); //feather fall
+		All_Spells.Add( "IDENTIFY",  new Spell( 1, "", "" ) ); //read magic
+		All_Spells.Add( "KNOW",      new Spell( 1, "", "" ) ); //comprehend 
+		All_Spells.Add( "BREATH",    new Spell( 1, "", "" ) );
+		All_Spells.Add( "SLOW",      new Spell( 1, "", "" ) );
+		All_Spells.Add( "LORE",      new Spell( 1, "", "" ) ); //legend lore
+/*
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
+		All_Spells.Add( "", new Spell( 1, "", "" ) );
 */
 
 		// A shield is a special item that allows you to force one attack against them to be rerolled. Each shield has a number of uses before it breaks.
 		All_Shields = new Dictionary<string, Shield>( );
+		All_Shields.Add( "Wooden Buckler", new Shield( 3 ) );
+
+
+		All_Advancements = new Dictionary<string, Advancement>( );
+		All_Advancements.Add( "Increase Strength", new IncreaseAttribute( Attribute.Strength ) );
+		All_Advancements.Add( "Increase Dexterity", new IncreaseAttribute( Attribute.Dexterity ) );
+		All_Advancements.Add( "Increase Constitution", new IncreaseAttribute( Attribute.Constitution ) );
+		All_Advancements.Add( "Increase Intelligence", new IncreaseAttribute( Attribute.Intelligence ) );
+		All_Advancements.Add( "Increase Wisdom", new IncreaseAttribute( Attribute.Wisdom ) );
+		All_Advancements.Add( "Increase Charisma", new IncreaseAttribute( Attribute.Charisma ) );
+		foreach ( KeyValuePair<string, Spell> spell_info in All_Spells ) { 
+			All_Advancements.Add( "Learn " + spell_info.Key, new GainItem( spell_info.Key ) );
+		}
+
 	}
 
 	public IEnumerator SyncWithServer ( string character_name, Character character )
