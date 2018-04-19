@@ -2,288 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Possible_Actions
-{
-	Movement = 0,
-	Weapon_Attack,
-	Cast_Spell,
-	Use_Skill,
-	EquipItem
-}
-
-public enum Attribute
-{
-	Strength = 0, // Hit chance, Tests of Strength
-	Dexterity,    // Armor Class, Starting Initative
-	Constitution, // Hit points, System Shock
-	Intelligence, // Skills Known, Magical Affinity
-	Wisdom,       // Saving Throws, Perception "sixth sense"
-	Charisma      // Henchmen, Reaction
-}
-
-public enum CharacterClass
-{
-	Fighter = 0,
-	Ranger,
-	Thief,
-	Bard,
-	Wizard,
-	Shair,
-	Cleric,
-	Paladin
-}
-
-public class Advancement
-{
-	public virtual void ApplyAdvancement ( Character character ) { }
-}
-
-public class IncreaseAttribute : Advancement
-{
-	public Attribute Key_Attribute;
-
-	public IncreaseAttribute ( Attribute key_attribute )
-	{
-		Key_Attribute = key_attribute;
-	}
-
-	public override void ApplyAdvancement ( Character character ) 
-	{
-		character.Attribute_Current[ (int)Key_Attribute ] = character.Attribute_Current[ (int)Key_Attribute ] + 1;
-	}
-}
-
-public class GainItem : Advancement
-{
-	public string Item_Name;
-
-	public GainItem ( string item_name )
-	{
-		Item_Name = item_name;
-	}
-
-	public override void ApplyAdvancement ( Character character ) 
-	{
-		character.Inventory.Add( Item_Name );
-	}
-}
-
-public class NPC : Character
-{
-	public string Name;
-}
-
-public class Henchmen : NPC
-{
-
-}
-
-public class Item
-{
-	public int Use_Speed;
-
-}
-
-public class Equippable : Item
-{
-	public int Strength_Requirement;
-
-	public bool Can_Equip ( Character character )
-	{
-		if ( Strength_Requirement == 0 || character.Attribute_Current[ (int)Attribute.Strength ] > Strength_Requirement ) {
-			return true;
-		}
-		return false;
-	}
-
-	public virtual bool Do_Equip ( Character character )
-	{
-		if ( Can_Equip( character ) ) {
-			return true;
-		}
-		return false;
-	}
-
-}
-
-public class Weapon : Equippable
-{
-	public string Weapon_Name;
-	public string Weapon_Attack_Type;
-	public int Damage_Die;
-	public int Damage_Mod;
-	public int Reach_Value;
-	public bool Ignore_DR;
-
-	public Weapon ( int damage_die, int damage_mod, int use_speed, int reach_value, bool ignore_dr, string attack_type, string name = "" )
-	{
-		Damage_Die = damage_die;
-		Damage_Mod = damage_mod;
-		Use_Speed = use_speed;
-		Reach_Value = reach_value;
-		Ignore_DR = ignore_dr;
-	}
-
-	public bool HitEnemySuccess ( Character character )
-	{
-		return character.GetAttributeRoll( Attribute.Strength, 0 );
-	}
-
-	public int DamageDealt ( bool Enemy_large )
-	{
-		int damage_dealt = Random.Range( 1, Damage_Die ) + Damage_Mod;
-		if ( Enemy_large && !Ignore_DR ) {
-			return Mathf.Max(1, damage_dealt - 1 );
-		}
-		return damage_dealt;
-	}
-
-	public override bool Do_Equip ( Character character )
-	{
-		if ( Can_Equip( character ) ) {
-			return true;
-		}
-		return false;
-	}
-}
-
-
-public class Shield : Equippable
-{
-	public int Block_Number;
-	public Shield ( int block_number )
-	{
-		Block_Number = block_number;
-	}
-}
-
-public class Armor : Equippable
-{
-	public int Defense_Value;
-	public string Body_Slot;
-	public Armor ( int defense_value, string body_slot )
-	{
-		Defense_Value = defense_value;
-		Body_Slot = body_slot;
-	}
-}
-
-public class Skill : Item
-{
-	public string Skill_Message;
-	public Attribute Key_Attribute;
-	public int Skill_Mod;
-
-	public string Attempt ( Character character )
-	{
-		bool success = character.GetAttributeRoll( Key_Attribute, Skill_Mod );
-		string attempt_message = Skill_Message;
-		if ( success ) {
-			attempt_message += ", and succeeded!";
-		} else {
-			attempt_message += ", and failed!";
-		}
-		return attempt_message;
-	}
-}
-
-public class Spell : Item
-{
-	public List<string> Spell_Letters;
-	public int Spell_Level;
-	public string Spell_Description;
-
-	public Spell ( int spell_level, string spell_name, string spell_description )
-	{
-		Spell_Letters = new List<string>( );
-		foreach ( char c in spell_name ) {
-			Spell_Letters.Add( c.ToString( ) );
-		}
-
-		Spell_Level = spell_level;
-		Use_Speed = Spell_Letters.Count;
-		Spell_Description = spell_description;
-	}
-}
-
-public class Character
-{
-	public List<int> Attribute_Current;
-	public List<string> Armor, Skills, Weapons, Inventory, Advancements;
-
-
-	public Character ( )
-	{
-		Attribute_Current = new List<int>( new int[]{ 0,0,0,0,0,0 } );
-		Armor = new List<string>( );
-		Skills = new List<string>( );
-		Weapons = new List<string>( );
-		Inventory = new List<string>( );
-	}
-
-	// Special "class based" abilities here
-	public int Weapon_Speed_Mod = 2;
-
-
-	//TODO: Finish allocating advancements!
-	public void PopulateAdvancements ( CharacterClass character_class )
-	{
-		Advancements = new List<string>( );
-		switch ( character_class )
-		{
-		case CharacterClass.Fighter:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Ranger:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Thief:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Bard:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Wizard:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			AddGainItemsAdvancements( new string[]{ "Learn DARK", "Learn DIE", "Learn LIFT", "Learn GLOW", "Learn RUST" } );
-			break;
-		case CharacterClass.Shair:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Cleric:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		case CharacterClass.Paladin:
-			AddIncreasedAttributesAdvancements( 7,5,5,3,4,4 );
-			break;
-		}
-	}
-
-	public void AddGainItemsAdvancements ( string[] item_names )
-	{
-		for ( int i = 0; i < item_names.Length; i++ ) { Advancements.Add( item_names[ i ] ); }
-	}
-
-	public void AddIncreasedAttributesAdvancements ( int _str, int _dex, int _con, int _int, int _wis, int _cha )
-	{
-		for ( int i = 0; i < _str; i++ ) { Advancements.Add( "Increase Strength" ); }
-		for ( int i = 0; i < _dex; i++ ) { Advancements.Add( "Increase Dexterity" ); }
-		for ( int i = 0; i < _con; i++ ) { Advancements.Add( "Increase Constitution" ); }
-		for ( int i = 0; i < _int; i++ ) { Advancements.Add( "Increase Intelligence" ); }
-		for ( int i = 0; i < _wis; i++ ) { Advancements.Add( "Increase Wisdom" ); }
-		for ( int i = 0; i < _cha; i++ ) { Advancements.Add( "Increase Charisma" ); }
-	}
-
-	public bool GetAttributeRoll ( Attribute key_attribute, int skill_mod )
-	{
-		int roll = Random.Range( 1, 21 );
-		Debug.Log( "Character rolled and got " + roll );
-		if ( roll < Attribute_Current[ (int)key_attribute ] - skill_mod && roll != 20 ) {
-			return true;
-		}
-		return false;
-	}
-}
+using FlatWorld.Enumerators;
+using FlatWorld.Advancements;
+using FlatWorld.Characters;
+using FlatWorld.Items;
 
 public class RunGame : MonoBehaviour 
 {
@@ -297,6 +19,7 @@ public class RunGame : MonoBehaviour
 	private void Awake( ) 
 	{
 		All_Weapons = new Dictionary<string, Weapon>( );
+		// Melee Weapons
 		All_Weapons.Add( "Dagger",     new Weapon( 4, 0, 3, 5,    false, "stab" ) );
 		All_Weapons.Add( "Club",       new Weapon( 6, 0, 4, 5,    true, "thwack" ) );
 		All_Weapons.Add( "Spear",      new Weapon( 6, 0, 4, 10,   false, "stab" ) );
@@ -304,13 +27,15 @@ public class RunGame : MonoBehaviour
 		All_Weapons.Add( "Sword",      new Weapon( 8, 0, 4, 5,    false, "swing" ) );
 		All_Weapons.Add( "Claymore",   new Weapon( 4, 4, 5, 5,    false, "swing" ) );
 
+		// Ranged Weapons
 		All_Weapons.Add( "Sling",      new Weapon( 4, 0, 3, 5,    false, "twirl" ) );
 		All_Weapons.Add( "Short Bow",  new Weapon( 6, 0, 4, 60,   false, "twang" ) );
 		All_Weapons.Add( "Long Bow",   new Weapon( 6, 1, 4, 120,  false, "twang" ) );
 		All_Weapons.Add( "Crossbow",   new Weapon( 8, 1, 6, 90,   true,  "twang" ) );
 
+		// Armor class starts at 10 (50% crit chance against you) and goes down to 0 (0% crit chance
 		All_Armor = new Dictionary<string, Armor>( );
-		All_Armor.Add( "Cloth Tabard",     new Armor( 15, "body" ) );
+		All_Armor.Add( "Cloth Tabard",     new Armor( -1, "body" ) );
 
 		All_Skills = new Dictionary<string, Skill>( );
 		All_Skills.Add( "LockPick", new Skill( ) );
