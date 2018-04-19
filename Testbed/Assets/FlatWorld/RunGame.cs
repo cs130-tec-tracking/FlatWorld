@@ -20,27 +20,57 @@ public class RunGame : MonoBehaviour
 	{
 		All_Weapons = new Dictionary<string, Weapon>( );
 		// Melee Weapons
-		All_Weapons.Add( "Dagger",     new Weapon( 4, 0, 3, 5,    false, "stab" ) );
-		All_Weapons.Add( "Club",       new Weapon( 6, 0, 4, 5,    true, "thwack" ) );
-		All_Weapons.Add( "Spear",      new Weapon( 6, 0, 4, 10,   false, "stab" ) );
-		All_Weapons.Add( "Mace",       new Weapon( 6, 1, 5, 5,    true,  "thwack" ) );
-		All_Weapons.Add( "Sword",      new Weapon( 8, 0, 4, 5,    false, "swing" ) );
-		All_Weapons.Add( "Claymore",   new Weapon( 4, 4, 5, 5,    false, "swing" ) );
+		All_Weapons.Add( "Dagger",     new Weapon( new Vector3(  1,  1, 3 ), 4, 0,  5,   false, "stab"   ) );
+		All_Weapons.Add( "Club",       new Weapon( new Vector3(  5,  1, 4 ), 6, 0,  5,   true,  "thwack" ) );
+		All_Weapons.Add( "Spear",      new Weapon( new Vector3(  3,  1, 4 ), 6, 0, 10,   false, "stab"   ) );
+		All_Weapons.Add( "Mace",       new Weapon( new Vector3( 10,  5, 5 ), 6, 1,  5,   true,  "thwack" ) );
+		All_Weapons.Add( "Sword",      new Weapon( new Vector3(  3,  1, 4 ), 8, 0,  5,   false, "swing"  ) );
+		All_Weapons.Add( "Claymore",   new Weapon( new Vector3( 15, 10, 5 ), 4, 4,  5,   false, "swing"  ) );
 
 		// Ranged Weapons
-		All_Weapons.Add( "Sling",      new Weapon( 4, 0, 3, 5,    false, "twirl" ) );
-		All_Weapons.Add( "Short Bow",  new Weapon( 6, 0, 4, 60,   false, "twang" ) );
-		All_Weapons.Add( "Long Bow",   new Weapon( 6, 1, 4, 120,  false, "twang" ) );
-		All_Weapons.Add( "Crossbow",   new Weapon( 8, 1, 6, 90,   true,  "twang" ) );
+		All_Weapons.Add( "Sling",      new Weapon( new Vector3(  2,  1, 3 ), 4, 0,   5,  false, "twirl"  ) );
+		All_Weapons.Add( "Short Bow",  new Weapon( new Vector3(  5, 15, 4 ), 6, 0,  60,  false, "twang"  ) );
+		All_Weapons.Add( "Long Bow",   new Weapon( new Vector3(  7, 30, 4 ), 6, 1, 120,  false, "twang"  ) );
+		All_Weapons.Add( "Crossbow",   new Weapon( new Vector3( 10, 25, 6 ), 8, 1,  90,  true,  "twang"  ) );
 
-		// Armor class starts at 10 (50% crit chance against you) and goes down to 0 (0% crit chance
+		// Armor class starts at 10 (50% crit chance against you) and goes down to 0 (0% crit chance) 
+		// so undead have an armor class of 0, immune to crit, but not immune to damage. So simple!
 		All_Armor = new Dictionary<string, Armor>( );
-		All_Armor.Add( "Cloth Tabard",     new Armor( -1, "body" ) );
+		/*
+		All_Armor.Add( "Cloth Tabard",        new Armor(  2, 0, -1, "body"  ) );
+		All_Armor.Add( "Cloth Leggings",      new Armor(  2, -1, "legs"  ) );
+		All_Armor.Add( "Cloth Cap",           new Armor(  1,  0, "head"  ) );
+		All_Armor.Add( "Cloth Gloves",        new Armor(  1,  0, "hands" ) );
+		All_Armor.Add( "Cloth Boots",         new Armor(  1,  0, "feet"  ) );
 
+		All_Armor.Add( "Animal Hides",        new Armor(  10, -3, "body" ) );
+
+		All_Armor.Add( "Padded Leather",      new Armor( 10, -3, "body" ) );
+
+		All_Armor.Add( "Studded Leather",     new Armor( 0, -4, "body" ) );
+
+		All_Armor.Add( "Ringmail Coat",       new Armor( 0, -5, "body" ) );
+
+		All_Armor.Add( "Chainmail Coat",      new Armor( 15, -3, "body"  ) );
+		All_Armor.Add( "Chainmail Leggings",  new Armor(  7, -2, "legs"  ) );
+		All_Armor.Add( "Chainmail Coif",      new Armor(  3, -1, "head"  ) );
+		All_Armor.Add( "Chainmail Gauntlets", new Armor(  3,  0, "hands" ) );
+		All_Armor.Add( "Chainmail Boots",     new Armor(  7,  0, "feet"  ) );
+
+		All_Armor.Add( "Bandedmail Coat",     new Armor(  0, -7, "body" ) );
+		All_Armor.Add( "Bandedmail Leggings", new Armor(  0, -7, "body" ) );
+
+		All_Armor.Add( "Scalemail Coat",     new Armor( 0, -7, "body" ) );
+		All_Armor.Add( "Scalemail Leggings", new Armor( 0, -1, "legs" ) );
+		// great helm
+		// NO PLATE ARMOR! Its too heavy
+*/
 		All_Skills = new Dictionary<string, Skill>( );
+/*
 		All_Skills.Add( "LockPick", new Skill( ) );
-
+*/
 		All_Spells = new Dictionary<string, Spell>( );
+/*
 		// Level 1 General Spells
 		All_Spells.Add( "DARK",      new Spell( 1, "DARK",   "" ) );
 		All_Spells.Add( "DIE",       new Spell( 1, "DIE",    "Deal 1d4 damage to a single target." ) );
@@ -110,6 +140,8 @@ public class RunGame : MonoBehaviour
 		All_Spells.Add( "BREATH",    new Spell( 1, "", "" ) );
 		All_Spells.Add( "SLOW",      new Spell( 1, "", "" ) );
 		All_Spells.Add( "LORE",      new Spell( 1, "", "" ) ); //legend lore
+
+*/
 /*
 		All_Spells.Add( "", new Spell( 1, "", "" ) );
 		All_Spells.Add( "", new Spell( 1, "", "" ) );
@@ -123,8 +155,14 @@ public class RunGame : MonoBehaviour
 
 		// A shield is a special item that allows you to force one attack against them to be rerolled. Each shield has a number of uses before it breaks.
 		All_Shields = new Dictionary<string, Shield>( );
+		/*
 		All_Shields.Add( "Wooden Buckler", new Shield( 3 ) );
+		All_Shields.Add( "Hide Buckler",   new Shield( 5 ) );
+		All_Shields.Add( "Metal Buckler",  new Shield( 7 ) );
 
+		All_Shields.Add( "Hide Shield",   new Shield( 5 ) );
+		All_Shields.Add( "Tower Shield",  new Shield( 15 ) );
+*/
 
 		All_Advancements = new Dictionary<string, Advancement>( );
 		All_Advancements.Add( "Increase Strength", new IncreaseAttribute( Attribute.Strength ) );

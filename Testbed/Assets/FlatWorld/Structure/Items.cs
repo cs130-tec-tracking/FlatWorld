@@ -10,12 +10,23 @@ namespace FlatWorld.Items
 	public class Item
 	{
 		public int Use_Speed;
-
+		public int Weight;
+		public int Cost;
+		public Item ( Vector3 weight_cost_speed )
+		{
+			Weight = (int)weight_cost_speed.x;
+			Cost = (int)weight_cost_speed.y;
+		}
 	}
 
 	public class Equippable : Item
 	{
 		public int Strength_Requirement;
+
+		public Equippable ( Vector3 weight_cost_speed ) : base( weight_cost_speed )
+		{
+
+		}
 
 		public bool Can_Equip ( Character character )
 		{
@@ -44,11 +55,10 @@ namespace FlatWorld.Items
 		public int Reach_Value;
 		public bool Ignore_DR;
 
-		public Weapon ( int damage_die, int damage_mod, int use_speed, int reach_value, bool ignore_dr, string attack_type, string name = "" )
+		public Weapon ( Vector3 weight_cost_speed, int damage_die, int damage_mod, int reach_value, bool ignore_dr, string attack_type, string name = "" ) : base( weight_cost_speed )
 		{
 			Damage_Die = damage_die;
 			Damage_Mod = damage_mod;
-			Use_Speed = use_speed;
 			Reach_Value = reach_value;
 			Ignore_DR = ignore_dr;
 		}
@@ -80,7 +90,7 @@ namespace FlatWorld.Items
 	public class Shield : Equippable
 	{
 		public int Block_Number;
-		public Shield ( int block_number )
+		public Shield ( Vector3 weight_cost_speed, int block_number ) : base( weight_cost_speed )
 		{
 			Block_Number = block_number;
 		}
@@ -90,7 +100,7 @@ namespace FlatWorld.Items
 	{
 		public int Defense_Value;
 		public string Body_Slot;
-		public Armor ( int defense_value, string body_slot )
+		public Armor ( Vector3 weight_cost_speed, int defense_value, string body_slot ) : base( weight_cost_speed )
 		{
 			Defense_Value = defense_value;
 			Body_Slot = body_slot;
@@ -102,6 +112,11 @@ namespace FlatWorld.Items
 		public string Skill_Message;
 		public Attribute Key_Attribute;
 		public int Skill_Mod;
+
+		public Skill ( Vector3 weight_cost_speed ) : base( weight_cost_speed )
+		{
+
+		}
 
 		public string Attempt ( Character character )
 		{
@@ -122,7 +137,7 @@ namespace FlatWorld.Items
 		public int Spell_Level;
 		public string Spell_Description;
 
-		public Spell ( int spell_level, string spell_name, string spell_description )
+		public Spell ( int spell_level, string spell_name, string spell_description, Vector3 weight_cost_speed ) : base( weight_cost_speed )
 		{
 			Spell_Letters = new List<string>( );
 			foreach ( char c in spell_name ) {
