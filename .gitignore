@@ -4,3 +4,9 @@ Testbed/Temp/
 Testbed/.vscode/
 Testbed/Testbed.sln
 Testbed/Assembly-CSharp.csproj
+Flatworld_Client/obj/
+Flatworld_Client/Library/
+Flatworld_Client/Temp/
+Flatworld_Client/.vscode/
+Flatworld_Client/Client.sln
+Flatworld_Client/Assembly-CSharp.csproj

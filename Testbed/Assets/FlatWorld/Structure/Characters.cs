@@ -11,7 +11,6 @@ namespace FlatWorld.Characters {
 		public List<int> Attribute_Current;
 		public List<string> Armor, Skills, Weapons, Inventory, Advancements;
 
-
 		public Character ( )
 		{
 			Attribute_Current = new List<int>( new int[]{ 0,0,0,0,0,0 } );
