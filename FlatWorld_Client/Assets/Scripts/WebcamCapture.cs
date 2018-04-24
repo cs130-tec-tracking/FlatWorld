@@ -7,10 +7,19 @@ public class WebcamCapture : MonoBehaviour
 	public WebCamTexture m_WebCamTexture;
 	public Material Image_Material;
 
-	// Use this for initialization
-	void Start () {
-		m_WebCamTexture = new WebCamTexture( 512, 512 );
+	public int WEBCAM_DIMENSIONS;
+
+	private void Awake () 
+	{
+		WEBCAM_DIMENSIONS= 256;
+
+		m_WebCamTexture = new WebCamTexture( WEBCAM_DIMENSIONS, WEBCAM_DIMENSIONS );
+//e		m_WebCamTexture..width = WEBCAM_DIMENSIONS;
+//		m_WebCamTexture.height = WEBCAM_DIMENSIONS;
 		Image_Material.mainTexture = m_WebCamTexture;
+	}
+	private void Start ( )
+	{
 		m_WebCamTexture.Play();	
 	}
 }
